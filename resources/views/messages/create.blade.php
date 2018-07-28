@@ -4,6 +4,15 @@
 
  <h1>メッセージ新規作成ページ</h1>
 
+    @if (count($errors) > 0)
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
+
     {!! Form::model($message, ['route' => 'messages.store']) !!}
 
         {!! Form::label('content', 'メッセージ:') !!}
@@ -13,7 +22,5 @@
 
     {!! Form::close() !!}
 
-    {{ '<p style="color: red;">htmlentities 関数に通した場合</p>' }}
-    {!! '<p style="color: red;">htmlentities 関数に通さなかった場合</p>' !!}
 
 @endsection
